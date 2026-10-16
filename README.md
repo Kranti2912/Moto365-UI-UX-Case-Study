@@ -1,6 +1,8 @@
 # Moto365 — Designing the system around the car
 
-A responsive, single-page portfolio case study built with HTML, CSS, JavaScript and Three.js. The opening scene uses the red Khronos CarConcept glTF model with clearcoat paint, a photographic HDR studio environment, geometry-cast soft shadows, drag rotation and an exploded view made from its authored hood, roof, doors, cabin, engine, axles and four wheel assemblies. Hood and door hinges open during the sequence. If WebGL or the model is unavailable, the matching official red-car preview image appears with an animated entrance. GSAP and ScrollTrigger provide the reveal and scrollytelling motion; Lenis adds optional smooth scrolling. A visitor can switch between light and dark themes and opt into a quiet interface chime.
+A responsive portfolio case study built with HTML, CSS, JavaScript and Three.js. The opening scene uses the red Khronos CarConcept glTF model with clearcoat paint, a photographic HDR studio environment, geometry-cast soft shadows, drag rotation and an exploded view made from its authored hood, roof, doors, cabin, engine, axles and four wheel assemblies. Hood and door hinges open during the sequence. If WebGL or the model is unavailable, the matching official red-car preview image appears with an animated entrance. GSAP and ScrollTrigger provide reveal and scrollytelling motion; Lenis adds optional smooth scrolling. Visitors can switch between light and dark themes and opt into a quiet, locally generated engine ambience with gentle scroll and click sounds.
+
+The main story links to six product case-study views: InspektAI, InspektAI Assist, MotoDoc, Moto365 Club, rebranding, and the marketplace. Each view has its own URL (`project.html?case=…`), problem framing, interface previews, design decisions, process, impact context and live product link. The interface previews include small interactive prototypes and are usable with a keyboard or touch input.
 
 ## Preview
 
@@ -10,14 +12,16 @@ Serve this folder with any static web server and open its local address. The GLB
 
 - `index.html` — case-study narrative, product ecosystem and live links
 - `styles.css` — responsive light/dark UI, motion states and interface styling
-- `script.js` — Three.js vehicle, theme, audio, navigation and scroll interactions
+- `script.js` — Three.js vehicle, navigation and scroll interactions
+- `project.html` / `project.js` / `project.css` — six linked product case-study views and responsive interface studies
+- `site-ui.js` — shared theme control and opt-in, locally generated ambience and UI sounds
 - `assets/car-concept.glb` — 11.7 MB detailed car model used for the interactive hero and exploded view
 - `assets/car-concept-fallback.jpg` — matching red-car preview from the Khronos model viewer
 - `assets/` — model, Moto365 and Automoto brand visuals, PDI landing-page context, and live InspektAI/MotoDoc visuals
 
 ## Visual source notes
 
-The included Moto365 wordmark, Automoto mark, PDI landing-page presentation image, and selected live product visuals were extracted from the supplied public case-study/live-site references. The compact product interface panels are authored visual summaries of the workflows described in the project; they are labeled as conceptual rather than presented as exact Figma exports. There are no links to Figma in the page.
+The included Moto365 wordmark, Automoto mark, PDI landing-page presentation image, and selected live product visuals were extracted from the supplied public case-study/live-site references. The working Figma file includes separate ECOM, GMS, Branding and Design system, PDI Report, Admin, Club webapp, PDI Landing page and Inspector app sections. Its representative interface patterns inform the responsive screen studies; these are labeled as interface studies rather than presented as exact Figma exports. The PDI landing-page visual and live product assets are actual project visuals. There are no links to Figma in the page.
 
 The project outcomes are presented as team-reported directional metrics and are not attributed to design alone. The company split is described as April 2026: Moto365 continued with the product ecosystem, while Automoto became a separate company.
 

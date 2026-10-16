@@ -15,15 +15,16 @@
   <script defer src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/loaders/RGBELoader.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="./site-ui.js"></script>
   <script defer src="./script.js"></script>
 </head>
 <body>
   <div class="scroll-meter" aria-hidden="true"><span id="scroll-meter-fill"></span></div>
   <header class="topbar">
-    <a class="brand-link" href="#top" aria-label="Moto365 case study home">
-      <img src="./assets/moto365-live-logo.svg" alt="moto365" />
-      <span class="brand-divider"></span><span class="brand-case">CASE STUDY<br /><b>01 / 04</b></span>
-    </a>
+    <div class="nav-identity">
+      <a class="projects-back" href="https://pradnyauxportfolio.framer.website/new-portfolio-projects" aria-label="Back to all projects"><span aria-hidden="true">←</span><span>All projects</span></a>
+      <span class="brand-divider" aria-hidden="true"></span><span class="brand-case">LIVE CASE STUDY</span>
+    </div>
     <nav class="main-nav" aria-label="Case study sections">
       <a href="#system">The system</a>
       <a href="#pdi">PDI experience</a>
@@ -31,7 +32,7 @@
       <a href="#outcomes">Outcomes</a>
     </nav>
     <div class="top-actions">
-      <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" aria-label="Turn interface sounds on"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-label">SOUND OFF</span></button>
+      <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" aria-label="Turn subtle engine ambience and interface sounds on" title="Opt in to a quiet engine ambience and interaction sounds"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-label">SOUND OFF</span></button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span id="theme-label">Dark</span></button>
       <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
     </div>
@@ -62,7 +63,7 @@
         </div>
         <div class="explode-caption" id="explode-caption" aria-live="polite"><span class="caption-mark">01</span><span>EXPLODED VIEW</span><b>PANEL LIFT · HINGED DOORS · RUNNING GEAR</b></div>
       </div>
-      <div class="hero-bottom"><span class="scroll-cue"><i></i> SCROLL TO FOLLOW THE JOURNEY</span><span class="hero-bottom-right mono">A LIVE PROJECT CASE STUDY <span>↘</span></span></div>
+      <div class="hero-bottom"><span class="hero-bottom-left mono">LIVE PRODUCT ECOSYSTEM · 2025—26</span><span class="hero-bottom-right mono">A LIVE PROJECT CASE STUDY <span>↘</span></span></div>
     </section>
 
     <section class="chapter-intro page-wrap" id="system">
@@ -89,22 +90,32 @@
         <article class="product-card product-inspect" data-reveal>
           <div class="product-card-top"><span class="product-number">01 / INSPECTION</span><span class="product-accent"></span></div>
           <div class="mini-report" aria-label="Illustrative inspection report interface"><div class="mini-report-head"><span class="mini-logo">M<span>365</span></span><span class="mini-status">REPORT READY</span></div><div class="mini-car-line"><span>2021 · SUV · 42,800 km</span><b>86<span>/100</span></b></div><div class="mini-score"><i style="--score:88%"></i></div><div class="mini-findings"><span><i class="ok"></i> Exterior</span><b>Good</b><span><i class="ok"></i> Engine</span><b>Good</b><span><i class="watch"></i> Tyres</span><b>Review</b></div></div>
-          <div class="product-card-copy"><span class="product-icon">⌁</span><h3>InspektAI</h3><p>Pre-delivery inspection for new and used cars. A structured inspection becomes a report customers can scan, understand and use.</p><a href="https://www.inspektai.in/" target="_blank" rel="noreferrer">Explore InspektAI <span>↗</span></a></div>
+          <div class="product-card-copy"><span class="product-icon">⌁</span><h3>InspektAI</h3><p>Pre-delivery inspection for new and used cars. A structured inspection becomes a report customers can scan, understand and use.</p><a href="project.html?case=inspektai">View the case study <span>↗</span></a></div>
         </article>
         <article class="product-card product-assist" data-reveal>
           <div class="product-card-top"><span class="product-number">02 / BUYER GUIDANCE</span><span class="product-accent"></span></div>
           <div class="assist-ui" aria-label="Illustrative guided booking interface"><div class="assist-topline"><span class="assist-back">←</span><b>Find your inspection</b><span>●</span></div><div class="assist-progress"><i></i><i></i><i></i></div><div class="assist-question">What are you<br /><strong>looking at today?</strong></div><div class="assist-option selected"><span>▣</span><b>Used car</b><span>›</span></div><div class="assist-option"><span>✳</span><b>New car PDI</b><span>›</span></div></div>
-          <div class="product-card-copy"><span class="product-icon">⌕</span><h3>InspektAI Assist</h3><p>A guided service entry point that helps a buyer choose the right inspection and move toward booking with less guesswork.</p><a href="https://assist.inspektai.in/start" target="_blank" rel="noreferrer">Open Assist <span>↗</span></a></div>
+          <div class="product-card-copy"><span class="product-icon">⌕</span><h3>InspektAI Assist</h3><p>A guided service entry point that helps a buyer choose the right inspection and move toward booking with less guesswork.</p><a href="project.html?case=assist">View the case study <span>↗</span></a></div>
         </article>
         <article class="product-card product-garage" data-reveal>
           <div class="product-card-top"><span class="product-number">03 / GARAGE OPERATIONS</span><span class="product-accent"></span></div>
           <div class="garage-live-visual"><img src="./assets/motodoc-vehicle-profile.avif" alt="Vehicle profile interface visual extracted from the live MotoDoc product site" loading="lazy" /><span class="live-visual-tag">LIVE PRODUCT VISUAL</span></div>
-          <div class="product-card-copy"><span class="product-icon">⌘</span><h3>MotoDoc</h3><p>Garage management shaped around real service workflows, with TecDoc collaboration supporting parts and vehicle data.</p><a href="https://motodoc.in/" target="_blank" rel="noreferrer">Explore MotoDoc <span>↗</span></a></div>
+          <div class="product-card-copy"><span class="product-icon">⌘</span><h3>MotoDoc</h3><p>Garage management shaped around real service workflows, with TecDoc collaboration supporting parts and vehicle data.</p><a href="project.html?case=motodoc">View the case study <span>↗</span></a></div>
         </article>
         <article class="product-card product-club" data-reveal>
           <div class="product-card-top"><span class="product-number">04 / OWNER COMMUNITY</span><span class="product-accent"></span></div>
           <div class="club-ui" aria-label="Illustrative automotive community feed"><div class="club-cover"><span class="club-sun"></span><span class="club-mountain"></span><b>WEEKEND<br />DRIVE CLUB</b><small>COMMUNITY RUN · 08:30 AM</small></div><div class="club-meta"><span class="club-avatar">R</span><span><b>Rhea's Garage</b><small>Enthusiast · Bengaluru</small></span><span class="club-heart">♡ 128</span></div><div class="club-activity"><i>↗</i> 24 drivers are joining this route</div></div>
-          <div class="product-card-copy"><span class="product-icon">↗</span><h3>Moto365 Club</h3><p>A social space for automotive enthusiasts to connect around builds, knowledge, community and the joy of the drive.</p><a href="https://www.moto365.club/app/dashboard" target="_blank" rel="noreferrer">Visit the community <span>↗</span></a></div>
+          <div class="product-card-copy"><span class="product-icon">↗</span><h3>Moto365 Club</h3><p>A social space for automotive enthusiasts to connect around builds, knowledge, community and the joy of the drive.</p><a href="project.html?case=club">View the case study <span>↗</span></a></div>
+        </article>
+        <article class="product-card product-rebrand" data-reveal>
+          <div class="product-card-top"><span class="product-number">05 / BRAND SYSTEM</span><span class="product-accent"></span></div>
+          <div class="brand-card-visual" aria-label="Moto365 identity system preview"><div class="brand-card-old"><small>FROM</small><img src="./assets/moto365-product-logos.webp" alt="" loading="lazy" /></div><span class="brand-card-arrow" aria-hidden="true">→</span><div class="brand-card-new"><small>TO</small><img src="./assets/moto365-live-logo.svg" alt="Moto365 wordmark" loading="lazy" /></div><div class="brand-swatch-row"><i></i><i></i><i></i><i></i><span>ONE SYSTEM · MANY TOUCHPOINTS</span></div></div>
+          <div class="product-card-copy"><span class="product-icon">✳</span><h3>Rebranding</h3><p>A new, ownable identity system that could connect a parent brand, products, service reports and digital experiences.</p><a href="project.html?case=rebrand">View the case study <span>↗</span></a></div>
+        </article>
+        <article class="product-card product-marketplace" data-reveal>
+          <div class="product-card-top"><span class="product-number">06 / MARKETPLACE</span><span class="product-accent"></span></div>
+          <div class="market-card-visual" aria-label="Automotive marketplace interface preview"><div class="market-topline"><b>moto<span>365</span></b><span>Parts &amp; care</span><i>⌕</i><i>♡</i></div><div class="market-feature"><small>BUILT FOR THE WAY YOU DRIVE</small><b>Find the right<br />fit for your car.</b><span>Shop parts <i>↗</i></span></div><div class="market-items"><article><i class="market-product product-oil"></i><b>Engine care</b><small>From ₹899</small></article><article><i class="market-product product-wheel"></i><b>Road essentials</b><small>Curated for you</small></article><article><i class="market-product product-care"></i><b>Car care</b><small>Ready for the road</small></article></div></div>
+          <div class="product-card-copy"><span class="product-icon">⌕</span><h3>Marketplace</h3><p>An e-commerce direction for automotive products and services, structured to help owners browse by need and vehicle fit.</p><a href="project.html?case=marketplace">View the case study <span>↗</span></a></div>
         </article>
       </div>
       <p class="visual-note mono">SELECTED LIVE PRODUCT VISUALS + CONCEPTUAL WORKFLOW SUMMARIES · OPEN A PRODUCT TO EXPLORE ITS CURRENT EXPERIENCE</p>

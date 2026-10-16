@@ -1,73 +1,14 @@
 (() => {
   const root = document.documentElement;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const themeButton = document.querySelector("#theme-toggle");
-  const themeLabel = document.querySelector("#theme-label");
-  const soundButton = document.querySelector("#sound-toggle");
   const menuButton = document.querySelector("#menu-toggle");
   const nav = document.querySelector(".main-nav");
   const navScrim = document.querySelector("#nav-scrim");
   const explodeButton = document.querySelector("#explode-toggle");
   const explodeLabel = document.querySelector("#explode-label");
   const explodeCaption = document.querySelector("#explode-caption");
-  const soundLabel = document.querySelector(".sound-label");
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
-  let audioContext = null;
-  let soundsOn = false;
-
-  // Theme follows the visitor's last choice and stays fully functional without storage.
-  let storedTheme = null;
-  try { storedTheme = localStorage.getItem("moto365-case-theme"); } catch (_) {}
-  const initialTheme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  root.dataset.theme = initialTheme;
-  updateThemeLabel();
-  themeButton?.addEventListener("click", () => {
-    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-    try { localStorage.setItem("moto365-case-theme", root.dataset.theme); } catch (_) {}
-    updateThemeLabel();
-    updateThreeTheme();
-    playTick(560);
-  });
-  function updateThemeLabel() {
-    if (!themeButton) return;
-    const dark = root.dataset.theme === "dark";
-    themeLabel.textContent = dark ? "Light" : "Dark";
-    themeButton.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
-    themeButton.setAttribute("aria-pressed", String(dark));
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#111311" : "#f4f3ef");
-  }
-
-  // The small interface chime is opt-in. It is intentionally quiet and generated locally.
-  soundButton?.addEventListener("click", () => {
-    soundsOn = !soundsOn;
-    soundButton.setAttribute("aria-pressed", String(soundsOn));
-    soundButton.setAttribute("aria-label", soundsOn ? "Turn interface sounds off" : "Turn interface sounds on");
-    soundLabel.textContent = soundsOn ? "SOUND ON" : "SOUND OFF";
-    if (soundsOn) {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      if (AC) {
-        audioContext ||= new AC();
-        audioContext.resume?.();
-        playTick(440);
-        window.setTimeout(() => playTick(660), 90);
-      }
-    }
-  });
-  function playTick(frequency = 520) {
-    if (!soundsOn || !audioContext) return;
-    const now = audioContext.currentTime;
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(frequency, now);
-    gain.gain.setValueAtTime(.0001, now);
-    gain.gain.exponentialRampToValueAtTime(.018, now + .012);
-    gain.gain.exponentialRampToValueAtTime(.0001, now + .11);
-    oscillator.connect(gain).connect(audioContext.destination);
-    oscillator.start(now);
-    oscillator.stop(now + .12);
-  }
 
   // Responsive navigation is kept small enough to remain out of the story's way.
   function closeMenu() {
@@ -79,7 +20,6 @@
     const open = document.body.classList.toggle("nav-open");
     menuButton.setAttribute("aria-expanded", String(open));
     menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    playTick(500);
   });
   navScrim?.addEventListener("click", closeMenu);
   nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
@@ -457,6 +397,8 @@
     if (groundShadow?.material) groundShadow.material.opacity = dark ? .34 : .22;
   }
 
+  document.addEventListener("moto365:themechange", updateThreeTheme);
+
   explodeButton?.addEventListener("click", () => {
     if (!carParts.length) return;
     if (!exploded) {
@@ -470,7 +412,6 @@
     explodeButton.setAttribute("aria-pressed", String(exploded));
     explodeLabel.textContent = exploded ? "Reassemble" : "Explode view";
     explodeCaption?.classList.toggle("is-visible", exploded);
-    playTick(exploded ? 690 : 480);
     if (gsap && !prefersReducedMotion) {
       carParts.forEach(({ object, home, exploded: target }, index) => {
         gsap.to(object.position, { x: exploded ? target.x : home.x, y: exploded ? target.y : home.y, z: exploded ? target.z : home.z, duration: 1.05, delay: index * .035, ease: "power3.inOut", overwrite: "auto" });
