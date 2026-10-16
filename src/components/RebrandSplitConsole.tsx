@@ -50,7 +50,7 @@ export const RebrandSplitConsole: React.FC = () => {
                 03. Corporate Split & Identity Architecture · Feb 2025 → April 2026
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950 max-w-2xl text-balance">
-                From Automoto to Moto365: Navigating the April 2026 Split
+                From Automoto to Moto365:
               </h2>
               <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-2xl leading-relaxed">
                 Joined Automoto in February 2025 to architect the product suite from scratch. In April 2026, the company split—Automoto became a separate entity while our entire team and product ecosystem continued under the new flagship name <strong className="text-zinc-950 font-bold">Moto365</strong>.
