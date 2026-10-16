@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f3ef" />
+  <meta name="description" content="A multidisciplinary automotive product design case study: the Moto365 ecosystem, its rebrand, and a clearer customer journey from inspection to ownership." />
+  <title>Moto365 — Designing the system around the car</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/loaders/RGBELoader.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <div class="scroll-meter" aria-hidden="true"><span id="scroll-meter-fill"></span></div>
+  <header class="topbar">
+    <a class="brand-link" href="#top" aria-label="Moto365 case study home">
+      <img src="./assets/moto365-live-logo.svg" alt="moto365" />
+      <span class="brand-divider"></span><span class="brand-case">CASE STUDY<br /><b>01 / 04</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Case study sections">
+      <a href="#system">The system</a>
+      <a href="#pdi">PDI experience</a>
+      <a href="#identity">Identity</a>
+      <a href="#outcomes">Outcomes</a>
+    </nav>
+    <div class="top-actions">
+      <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" aria-label="Turn interface sounds on"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-label">SOUND OFF</span></button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span id="theme-label">Dark</span></button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-gridline" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow"><span class="status-dot"></span> AUTOMOTIVE SERVICES · PRODUCT DESIGN · 2025—26</p>
+        <h1 id="hero-title">The experience<br />around the car<br /><em>is the real product.</em></h1>
+        <p class="hero-deck">One connected ecosystem for buying, inspecting, servicing and enjoying a vehicle — designed across the moments between the drive.</p>
+        <div class="hero-ctas"><a class="pill-button pill-dark" href="#system">Explore the work <span aria-hidden="true">↓</span></a><button class="pill-button pill-glass" id="explode-toggle" type="button" aria-pressed="false"><span class="explode-glyph" aria-hidden="true">✳</span><span id="explode-label">Explode view</span></button></div>
+        <div class="hero-meta"><span><b>MY ROLE</b> Product design · UX/UI · brand · operations</span><span><b>IN MARKET</b> Live products &amp; services</span></div>
+      </div>
+
+      <div class="hero-stage" id="hero-stage" aria-label="Interactive 3D vehicle inspection view">
+        <div class="stage-bloom" aria-hidden="true"></div>
+        <canvas id="car-canvas" aria-label="Interactive realistic 3D car. Drag horizontally to rotate around its vertical axis; use Explode view to separate its real components."></canvas>
+        <div class="stage-ring ring-one" aria-hidden="true"></div><div class="stage-ring ring-two" aria-hidden="true"></div>
+        <div class="stage-index mono"><span>FIG. 01</span><a href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept" target="_blank" rel="noreferrer" aria-label="Car Concept model and textures by Eric Chadwick, licensed CC BY 4.0">MODEL: ERIC CHADWICK · CC BY 4.0 ↗</a></div>
+        <div class="inspection-chip glass-panel"><span class="chip-icon">✓</span><span><b>INSPECTION READY</b><small>300+ points · one clear report</small></span><span class="chip-pulse"></span></div>
+        <div class="stage-annotation annotation-a"><span class="annotation-line"></span><span>THE VEHICLE</span><b>01</b></div>
+        <div class="stage-annotation annotation-b"><span class="annotation-line"></span><span>THE DECISION</span><b>02</b></div>
+        <div class="stage-controls glass-panel" aria-label="Vehicle display controls">
+          <span class="vehicle-finish"><i aria-hidden="true"></i><span><b>METALLIC CARMINE</b><small>PBR STUDIO LIGHTING</small></span></span>
+          <span class="control-separator"></span><span class="mono stage-hint">HORIZONTAL DRAG · Y AXIS</span><span class="drag-mark" aria-hidden="true">↔</span>
+        </div>
+        <div class="explode-caption" id="explode-caption" aria-live="polite"><span class="caption-mark">01</span><span>EXPLODED VIEW</span><b>PANEL LIFT · HINGED DOORS · RUNNING GEAR</b></div>
+      </div>
+      <div class="hero-bottom"><span class="scroll-cue"><i></i> SCROLL TO FOLLOW THE JOURNEY</span><span class="hero-bottom-right mono">A LIVE PROJECT CASE STUDY <span>↘</span></span></div>
+    </section>
+
+    <section class="chapter-intro page-wrap" id="system">
+      <div class="chapter-rail mono"><span>01</span><i></i><span>THE SYSTEM</span><span>02 / 06</span></div>
+      <div class="intro-body">
+        <p class="eyebrow">FROM A SINGLE SERVICE TO A CONNECTED JOURNEY</p>
+        <h2>A car purchase is a moment.<br /><em>Car care is a whole relationship.</em></h2>
+        <div class="intro-bottom"><p>At Automoto, I worked across the customer journey and the tools behind it. When the company split in April 2026, the products continued under Moto365 while Automoto became a separate company. The brand changed; the work carried forward.</p><div class="company-timeline"><div><span class="timeline-dot dot-orange"></span><b>FEB 2025</b><small>Joined Automoto</small></div><i></i><div><span class="timeline-dot dot-blue"></span><b>APR 2026</b><small>Moto365 stands alone</small></div></div></div>
+      </div>
+      <div class="journey-rail" aria-label="Customer journey across products">
+        <div class="journey-label mono">ONE OWNER · FOUR DIFFERENT NEEDS</div>
+        <div class="journey-track"><div class="journey-progress"></div>
+          <article class="journey-stop"><span class="stop-index">01</span><span class="stop-icon">⌕</span><b>Find</b><small>Compare &amp; shortlist</small><span class="stop-product">ASSIST</span></article>
+          <article class="journey-stop"><span class="stop-index">02</span><span class="stop-icon">⌁</span><b>Inspect</b><small>Understand the car</small><span class="stop-product">INSPEKTAI</span></article>
+          <article class="journey-stop"><span class="stop-index">03</span><span class="stop-icon">⌘</span><b>Maintain</b><small>Keep service moving</small><span class="stop-product">MOTODOC</span></article>
+          <article class="journey-stop"><span class="stop-index">04</span><span class="stop-icon">↗</span><b>Belong</b><small>Share the passion</small><span class="stop-product">MOTO365 CLUB</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ecosystem-section page-wrap" aria-labelledby="ecosystem-title">
+      <div class="section-heading"><div><p class="eyebrow">THE PORTFOLIO, IN PRACTICE</p><h2 id="ecosystem-title">Different tools.<br /><em>One clearer route.</em></h2></div><p>Each product solves a different job. My work moved between customer-facing experiences and the operational systems that make those experiences possible.</p></div>
+      <div class="product-grid">
+        <article class="product-card product-inspect" data-reveal>
+          <div class="product-card-top"><span class="product-number">01 / INSPECTION</span><span class="product-accent"></span></div>
+          <div class="mini-report" aria-label="Illustrative inspection report interface"><div class="mini-report-head"><span class="mini-logo">M<span>365</span></span><span class="mini-status">REPORT READY</span></div><div class="mini-car-line"><span>2021 · SUV · 42,800 km</span><b>86<span>/100</span></b></div><div class="mini-score"><i style="--score:88%"></i></div><div class="mini-findings"><span><i class="ok"></i> Exterior</span><b>Good</b><span><i class="ok"></i> Engine</span><b>Good</b><span><i class="watch"></i> Tyres</span><b>Review</b></div></div>
+          <div class="product-card-copy"><span class="product-icon">⌁</span><h3>InspektAI</h3><p>Pre-delivery inspection for new and used cars. A structured inspection becomes a report customers can scan, understand and use.</p><a href="https://www.inspektai.in/" target="_blank" rel="noreferrer">Explore InspektAI <span>↗</span></a></div>
+        </article>
+        <article class="product-card product-assist" data-reveal>
+          <div class="product-card-top"><span class="product-number">02 / BUYER GUIDANCE</span><span class="product-accent"></span></div>
+          <div class="assist-ui" aria-label="Illustrative guided booking interface"><div class="assist-topline"><span class="assist-back">←</span><b>Find your inspection</b><span>●</span></div><div class="assist-progress"><i></i><i></i><i></i></div><div class="assist-question">What are you<br /><strong>looking at today?</strong></div><div class="assist-option selected"><span>▣</span><b>Used car</b><span>›</span></div><div class="assist-option"><span>✳</span><b>New car PDI</b><span>›</span></div></div>
+          <div class="product-card-copy"><span class="product-icon">⌕</span><h3>InspektAI Assist</h3><p>A guided service entry point that helps a buyer choose the right inspection and move toward booking with less guesswork.</p><a href="https://assist.inspektai.in/start" target="_blank" rel="noreferrer">Open Assist <span>↗</span></a></div>
+        </article>
+        <article class="product-card product-garage" data-reveal>
+          <div class="product-card-top"><span class="product-number">03 / GARAGE OPERATIONS</span><span class="product-accent"></span></div>
+          <div class="garage-live-visual"><img src="./assets/motodoc-vehicle-profile.avif" alt="Vehicle profile interface visual extracted from the live MotoDoc product site" loading="lazy" /><span class="live-visual-tag">LIVE PRODUCT VISUAL</span></div>
+          <div class="product-card-copy"><span class="product-icon">⌘</span><h3>MotoDoc</h3><p>Garage management shaped around real service workflows, with TecDoc collaboration supporting parts and vehicle data.</p><a href="https://motodoc.in/" target="_blank" rel="noreferrer">Explore MotoDoc <span>↗</span></a></div>
+        </article>
+        <article class="product-card product-club" data-reveal>
+          <div class="product-card-top"><span class="product-number">04 / OWNER COMMUNITY</span><span class="product-accent"></span></div>
+          <div class="club-ui" aria-label="Illustrative automotive community feed"><div class="club-cover"><span class="club-sun"></span><span class="club-mountain"></span><b>WEEKEND<br />DRIVE CLUB</b><small>COMMUNITY RUN · 08:30 AM</small></div><div class="club-meta"><span class="club-avatar">R</span><span><b>Rhea's Garage</b><small>Enthusiast · Bengaluru</small></span><span class="club-heart">♡ 128</span></div><div class="club-activity"><i>↗</i> 24 drivers are joining this route</div></div>
+          <div class="product-card-copy"><span class="product-icon">↗</span><h3>Moto365 Club</h3><p>A social space for automotive enthusiasts to connect around builds, knowledge, community and the joy of the drive.</p><a href="https://www.moto365.club/app/dashboard" target="_blank" rel="noreferrer">Visit the community <span>↗</span></a></div>
+        </article>
+      </div>
+      <p class="visual-note mono">SELECTED LIVE PRODUCT VISUALS + CONCEPTUAL WORKFLOW SUMMARIES · OPEN A PRODUCT TO EXPLORE ITS CURRENT EXPERIENCE</p>
+    </section>
+
+    <section class="pdi-section" id="pdi">
+      <div class="pdi-shell page-wrap">
+        <div class="chapter-rail mono"><span>02</span><i></i><span>THE PDI EXPERIENCE</span><span>03 / 06</span></div>
+        <div class="pdi-heading"><div><p class="eyebrow">INSPEKTAI · CUSTOMER LANDING PAGE</p><h2>Make the risk<br /><em>easy to see.</em></h2></div><p>A buyer should understand the value of an inspection before being asked to book one. The redesign brought trust signals forward, made the process scannable and showed what the report actually contains.</p></div>
+        <div class="pdi-visual reveal-scale"><img src="./assets/pdi-landing-context.webp" alt="Moto365 InspektAI customer landing page shown on desktop and mobile, with the book-inspection action and vehicle visual" loading="lazy" /><div class="image-tag tag-one"><span>01</span><b>TRUST BEFORE THE ASK</b><small>Clear promise · visible proof</small></div><div class="image-tag tag-two"><span>02</span><b>SHOW THE OUTPUT</b><small>300+ points · one AI report</small></div><div class="image-caption mono"><span>INSPECTION LANDING PAGE · RESPONSIVE DIRECTION</span><span>DESKTOP + MOBILE</span></div></div>
+        <div class="pdi-work-grid"><article><span class="work-index">01</span><div><h3>Audit what slows understanding</h3><p>The source-page review flagged visual clutter, dense sections, weak CTA visibility and trust content appearing too late. Those symptoms pointed to one core job: help a cautious buyer make sense of the service quickly.</p></div></article><article><span class="work-index">02</span><div><h3>Give information a useful order</h3><p>Lead with the customer question, make the inspection journey explicit, and bring credibility and the booking action into a clearer visual hierarchy.</p></div></article><article><span class="work-index">03</span><div><h3>Turn a claim into a preview</h3><p>“300+ checks” becomes more concrete when paired with a report preview, clear findings and next steps — reducing the amount of interpretation left to the buyer.</p></div></article></div>
+        <div class="pdi-proof-strip"><span class="proof-mark">✓</span><div><b>A live customer touchpoint</b><small>Design and product work shaped for a service already in market.</small></div><a href="https://www.inspektai.in/" target="_blank" rel="noreferrer">View live landing page <span>↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="identity-section page-wrap" id="identity">
+      <div class="chapter-rail mono"><span>03</span><i></i><span>THE REBRAND</span><span>04 / 06</span></div>
+      <div class="identity-intro"><div><p class="eyebrow">A NEW COMPANY, A MORE FLEXIBLE SYSTEM</p><h2>From inherited<br />identity to <em>ownable.</em></h2></div><p>When Moto365 separated from Automoto in April 2026, it needed a visual system that could stand on its own and work consistently across products, reports, dashboards and customer-facing sites.</p></div>
+      <div class="identity-comparison">
+        <article class="identity-panel identity-before"><span class="identity-overline mono">BEFORE · AUTOMOTO-ERA MARK</span><div class="old-logo-frame"><img src="./assets/moto365-product-logos.webp" alt="Original orange Automoto mechanical gear and piston logo" loading="lazy" /></div><h3>Built for a service company.</h3><p>Literal, mechanical and strongly tied to the previous company’s visual language.</p><span class="identity-tag">HEAVY · ORANGE · SERVICE-LED</span></article>
+        <div class="identity-arrow" aria-hidden="true">→</div>
+        <article class="identity-panel identity-after"><span class="identity-overline mono">AFTER · MOTO365 VISUAL IDENTITY</span><div class="new-logo-frame"><img src="./assets/moto365-mark.avif" alt="Moto365 geometric mark and lowercase wordmark" loading="lazy" /></div><h3>Designed to move across screens.</h3><p>A cleaner geometric mark, lowercase wordmark and a flexible digital-first brand system.</p><span class="identity-tag">REFINED · DIGITAL · CONNECTED</span></article>
+      </div>
+      <div class="identity-principles"><article><span>01</span><b>Literal → ownable</b><p>Move from gear-and-piston imagery to an abstract motion mark.</p></article><article><span>02</span><b>Heavy → adaptable</b><p>Make the identity legible at app-icon, report and dashboard scale.</p></article><article><span>03</span><b>One → a system</b><p>Keep distinct product colors within a recognizable family.</p></article></div>
+      <div class="brand-system-bar"><div><span class="eyebrow">A FAMILY OF PRODUCTS</span><b>One system.<br />Distinct signals.</b></div><div class="brand-swatches"><div><i style="--swatch:#fc5c2e"></i><span>MOTO365<br /><small>#FC5C2E</small></span></div><div><i style="--swatch:#154eff"></i><span>INSPEKTAI<br /><small>#154EFF</small></span></div><div><i style="--swatch:#ef2950"></i><span>MOTODOC<br /><small>#EF2950</small></span></div><div><i style="--swatch:#8c40f6"></i><span>MOTO CLUB<br /><small>#8C40F6</small></span></div><div><i style="--swatch:#05e074"></i><span>UI SIGNAL<br /><small>#05E074</small></span></div></div><p>DM Sans · black / white foundations · product-led color</p></div>
+      <div class="identity-footnote"><span class="mono">BRAND SYSTEM SCOPE</span><span>LOGO · COLOR · TYPOGRAPHY · ICONOGRAPHY · GUIDELINES · DIGITAL APPLICATION</span><span class="mono">5 PRODUCT LOGOS IN THE FAMILY</span></div>
+    </section>
+
+    <section class="process-section">
+      <div class="process-shell page-wrap">
+        <div class="chapter-rail mono"><span>04</span><i></i><span>HOW I WORKED</span><span>05 / 06</span></div>
+        <div class="section-heading process-heading"><div><p class="eyebrow">FROM SIGNAL TO SHIPPED EXPERIENCE</p><h2>Designing for the<br /><em>whole operation.</em></h2></div><p>My remit was broad by necessity. The work connected customer-facing UX with internal tools, brand systems and day-to-day operations.</p></div>
+        <div class="process-line"><article data-reveal><span class="process-step">01</span><span class="process-icon">⌕</span><p class="eyebrow">UNDERSTAND</p><h3>Read the journey</h3><p>Audit the touchpoint, map the service flow, and find where a customer or operator has to guess.</p><small>OUTPUT · FRICTION POINTS + PRIORITIES</small></article><article data-reveal><span class="process-step">02</span><span class="process-icon">◫</span><p class="eyebrow">SHAPE</p><h3>Make the next step clear</h3><p>Structure information around the job, sketch hierarchy, then prototype the decisions that matter most.</p><small>OUTPUT · FLOW + INTERFACE DIRECTION</small></article><article data-reveal><span class="process-step">03</span><span class="process-icon">↗</span><p class="eyebrow">DELIVER</p><h3>Connect screens to service</h3><p>Design across responsive pages, product UI, live reports and admin workflows — then carry the system into use.</p><small>OUTPUT · SHIPPABLE, CONNECTED SURFACES</small></article><article data-reveal><span class="process-step">04</span><span class="process-icon">⟳</span><p class="eyebrow">IMPROVE</p><h3>Keep learning in market</h3><p>Use customer questions and operational bottlenecks to keep tuning the experience after launch.</p><small>OUTPUT · ITERATION IN THE LIVE SYSTEM</small></article></div>
+        <div class="many-hats"><span class="many-hats-mark">✳</span><div><p class="eyebrow">THE ROLE WAS NEVER JUST SCREENS</p><h3>Product designer at the center.<br /><em>Useful wherever the work needed me.</em></h3></div><div class="hat-list"><span>UX RESEARCH &amp; AUDIT</span><span>PRODUCT UI</span><span>BRAND &amp; LOGO</span><span>LANDING PAGES</span><span>ADMIN DASHBOARDS</span><span>LIVE PDI REPORTS</span><span>AI WORKFLOW AUTOMATION</span><span>OPERATIONS</span></div></div>
+      </div>
+    </section>
+
+    <section class="impact-section page-wrap" id="outcomes">
+      <div class="chapter-rail mono"><span>05</span><i></i><span>WHAT MOVED</span><span>06 / 06</span></div>
+      <div class="impact-top"><div><p class="eyebrow">REPORTED PROJECT OUTCOMES</p><h2>Less uncertainty.<br /><em>More momentum.</em></h2></div><p>Across the service and product ecosystem, clearer journeys and faster internal flows supported measurable business outcomes.</p></div>
+      <div class="impact-grid"><article class="impact-card impact-sales"><span class="impact-label">SALES / BOOKINGS</span><b><span class="count" data-count="45">45</span>–<span class="count" data-count="60">60</span><small>%</small></b><p>Increase in sales reported across key services</p><span class="impact-axis">01 —— 04</span></article><article class="impact-card"><span class="impact-label">BOOKING FLOW</span><b><span class="count" data-count="20">20</span><small>%</small></b><p>Less time to complete a booking</p><span class="impact-axis">02 —— 04</span></article><article class="impact-card"><span class="impact-label">OPERATIONS</span><b><span class="count" data-count="40">40</span><small>%</small></b><p>Faster admin and operational flow</p><span class="impact-axis">03 —— 04</span></article><article class="impact-card impact-trust"><span class="impact-label">CUSTOMER EXPERIENCE</span><b>↑</b><p>More trust and clarity at the point of decision</p><span class="trust-line">CLARITY → CONFIDENCE</span></article></div>
+      <p class="metric-note">Metrics shared by the project team. They reflect the combined product, service and operational effort; they are not attributed to design alone.</p>
+      <div class="reflection-grid"><div><p class="eyebrow">WHAT I LEARNED</p><h2>The best interface<br />often starts <em>off-screen.</em></h2></div><div class="reflection-list"><article><span>01</span><div><b>Trust needs an order.</b><p>Proof works harder when it appears before a visitor has to commit.</p></div></article><article><span>02</span><div><b>Operations are part of UX.</b><p>A clear customer promise depends on the internal flow delivering it.</p></div></article><article><span>03</span><div><b>One brand can hold many voices.</b><p>Consistency is a system of useful rules, not identical screens.</p></div></article></div></div>
+    </section>
+
+    <section class="live-section page-wrap" aria-labelledby="live-title">
+      <div class="live-head"><div><p class="eyebrow">A LIVE ECOSYSTEM</p><h2 id="live-title">Made to be <em>used.</em></h2></div><p>Explore the public products and company site as they continue to evolve.</p></div>
+      <div class="live-links"><a href="https://moto365.in/" target="_blank" rel="noreferrer"><span>01</span><b>Moto365</b><small>Parent company</small><i>↗</i></a><a href="https://www.inspektai.in/" target="_blank" rel="noreferrer"><span>02</span><b>InspektAI</b><small>Vehicle inspection</small><i>↗</i></a><a href="https://assist.inspektai.in/start" target="_blank" rel="noreferrer"><span>03</span><b>InspektAI Assist</b><small>Customer booking flow</small><i>↗</i></a><a href="https://motodoc.in/" target="_blank" rel="noreferrer"><span>04</span><b>MotoDoc</b><small>Garage management</small><i>↗</i></a><a href="https://www.moto365.club/app/dashboard" target="_blank" rel="noreferrer"><span>05</span><b>Moto365 Club</b><small>Automotive community</small><i>↗</i></a></div>
+    </section>
+
+    <section class="closing-section">
+      <div class="closing-orbit orbit-a" aria-hidden="true"></div><div class="closing-orbit orbit-b" aria-hidden="true"></div>
+      <div class="closing-content"><span class="closing-stamp mono">MOTO365 · 2025—26</span><p class="eyebrow">THE ROAD AHEAD IS A SYSTEM TOO</p><h2>Keep moving<br /><em>the experience forward.</em></h2><a class="pill-button pill-light" href="#top">Back to the beginning <span>↑</span></a></div>
+      <div class="closing-foot"><span>PRODUCT · BRAND · SERVICE · OPERATIONS</span><span>DESIGNED ACROSS THE JOURNEY</span></div>
+    </section>
+  </main>
+
+  <footer class="footer page-wrap"><a class="footer-brand" href="#top"><img src="./assets/moto365-live-logo.svg" alt="moto365" /></a><span>ECOSYSTEM CASE STUDY · FEB 2025—APR 2026+</span><a href="#top">BACK TO TOP ↑</a></footer>
+
+  <div class="nav-scrim" id="nav-scrim"></div>
+</body>
+</html>
