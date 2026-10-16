@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Automoto to Moto365 — UI/UX Product Case Study</title>
-    <meta name="description" content="Interactive UI/UX case study showcasing product design, April 2026 corporate rebrand, live HTML PDI reports, and AI workflow operations across InspektAI, MotoDoc × TecDoc, and Moto365 Club." />
+    <meta name="description" content="Interactive UI/UX case study showcasing product design, April 2026 corporate rebrand, live HTML PDI reports, and AI workflow operations across InspektAI, MotoDoc × TecDoc, and Moto365 Club with Three.js 3D animations." />
     <meta property="og:title" content="Automoto to Moto365 — UI/UX Product Case Study" />
-    <meta property="og:description" content="Interactive UI/UX case study showcasing product design, April 2026 corporate rebrand, live HTML PDI reports, and AI workflow operations across InspektAI, MotoDoc × TecDoc, and Moto365 Club." />
+    <meta property="og:description" content="Interactive UI/UX case study showcasing product design, April 2026 corporate rebrand, live HTML PDI reports, and AI workflow operations across InspektAI, MotoDoc × TecDoc, and Moto365 Club with Three.js 3D animations." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -38,6 +38,16 @@
           }
         }
       }
+    </script>
+
+    <!-- Three.js Importmap for zero-build GitHub Pages and standalone browser support -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+      }
+    }
     </script>
 
     <style>
@@ -105,6 +115,17 @@
       .btn-moto-black:active {
         transform: translateY(0);
       }
+
+      /* 3D Canvas styles */
+      #three-car-viewport canvas {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        cursor: grab;
+      }
+      #three-car-viewport canvas:active {
+        cursor: grabbing;
+      }
     </style>
   </head>
 
@@ -123,7 +144,7 @@
               UI/UX Live project
             </span>
             <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono-tabular font-bold bg-zinc-100 text-zinc-700 border border-zinc-200">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               Automoto → Moto365
             </span>
           </div>
@@ -152,7 +173,7 @@
             </a>
           </nav>
 
-          <!-- Right: "Go Back" Action Button (as explicitly requested) -->
+          <!-- Right: "Go Back" Action Button -->
           <div class="flex items-center gap-3">
             <button 
               type="button" 
@@ -181,7 +202,7 @@
       </header>
 
       <!-- =========================================================================
-           HERO SECTION: Subtle Polygonal Gray Facet + Script Motto
+           HERO SECTION: Subtle Polygonal Gray Facet + Three.js 3D Interactive Scanner
       ========================================================================= -->
       <section class="hero-facet-bg pt-14 pb-20 sm:pt-20 sm:pb-24 border-b border-zinc-200">
         <div class="max-w-[1240px] mx-auto px-6">
@@ -225,8 +246,56 @@
               </a>
             </div>
 
+            <!-- =================================================================
+                 THREE.JS 3D INTERACTIVE AUTOMOTIVE SCANNER VIEWPORT
+            ================================================================= -->
+            <div class="mt-12 relative rounded-3xl border border-zinc-200 bg-gradient-to-b from-zinc-50 to-white shadow-sm overflow-hidden">
+              
+              <!-- Top 3D Telemetry Bar -->
+              <div class="absolute top-4 left-6 right-6 z-10 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
+                <div class="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-zinc-200 shadow-xs pointer-events-auto">
+                  <span class="w-2 h-2 rounded-full bg-[#00E575]"></span>
+                  <span class="text-xs font-bold text-zinc-950 font-mono-tabular">3D VEHICLE DIAGNOSTIC WIREFRAME</span>
+                  <span class="text-[10px] text-zinc-400 font-mono-tabular">· THREE.JS R186 ENGINE</span>
+                </div>
+
+                <!-- 3D Camera Preset Pills -->
+                <div class="flex flex-wrap items-center gap-1.5 pointer-events-auto">
+                  <button type="button" onclick="if(window.automoto3D) window.automoto3D.focusPanel('hood')" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-xs transition-all">
+                    Bonnet (112µm)
+                  </button>
+                  <button type="button" onclick="if(window.automoto3D) window.automoto3D.focusPanel('roof')" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-xs transition-all">
+                    Roof (108µm)
+                  </button>
+                  <button type="button" onclick="if(window.automoto3D) window.automoto3D.focusPanel('door')" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-xs transition-all">
+                    Driver Door (114µm)
+                  </button>
+                  <button type="button" onclick="if(window.automoto3D) window.automoto3D.focusPanel('quarter')" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-xs transition-all">
+                    Quarter (124µm)
+                  </button>
+                  <button type="button" onclick="if(window.automoto3D) window.automoto3D.focusPanel('tailgate')" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-xs transition-all">
+                    Tailgate (116µm)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dedicated 3D Canvas Mount Point -->
+              <div id="three-car-viewport" class="w-full h-[380px] sm:h-[450px]"></div>
+
+              <!-- Bottom 3D Telemetry Overlay -->
+              <div class="absolute bottom-4 left-6 right-6 z-10 flex flex-wrap items-center justify-between gap-3 pointer-events-none text-xs font-mono-tabular">
+                <div class="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-lg border border-zinc-200 text-zinc-600">
+                  <span>Interactive 3D Viewport: Click & Drag to Rotate 360°</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-lg border border-zinc-200 text-[#FF4D15] font-bold">
+                  <span>LASER DEPTH SWEEP: ACTIVE</span>
+                </div>
+              </div>
+
+            </div>
+
             <!-- Staggered Performance Metrics Grid -->
-            <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
               <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-xs">
                 <div class="text-3xl sm:text-4xl font-extrabold font-mono-tabular text-zinc-950">+45%–60%</div>
                 <div class="text-xs font-bold text-zinc-900 mt-1">Increase in Sales Conversion</div>
@@ -683,7 +752,7 @@
                   <button
                     type="button"
                     id="btn-mode-console"
-                    onclick="switchViewMode('console')"
+                    onclick="window.automotoApp.switchViewMode('console')"
                     class="px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs flex items-center gap-2"
                   >
                     <span class="w-2 h-2 rounded-full bg-[#FF4D15]"></span>
@@ -692,7 +761,7 @@
                   <button
                     type="button"
                     id="btn-mode-report"
-                    onclick="switchViewMode('html-preview')"
+                    onclick="window.automotoApp.switchViewMode('html-preview')"
                     class="px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all text-zinc-600 hover:text-zinc-950 hover:bg-zinc-50 flex items-center gap-2"
                   >
                     <span class="w-2 h-2 rounded-full bg-[#00E575]"></span>
@@ -701,7 +770,7 @@
                 </div>
               </div>
 
-              <!-- Main Interactive Console Enclosure (Clean, minimal website aesthetic) -->
+              <!-- Main Interactive Console Enclosure -->
               <div class="bg-white border border-zinc-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                 
                 <!-- Top Control Bar -->
@@ -710,16 +779,16 @@
                     <span class="text-xs text-zinc-400 font-mono-tabular font-bold uppercase tracking-wider mr-1">
                       Vehicle:
                     </span>
-                    <button type="button" onclick="selectVehicle('tata-safari')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs" data-veh="tata-safari">
+                    <button type="button" onclick="window.automotoApp.selectVehicle('tata-safari')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs" data-veh="tata-safari">
                       2024 Tata Safari (Live #PDI011088)
                     </button>
-                    <button type="button" onclick="selectVehicle('used-octavia')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="used-octavia">
+                    <button type="button" onclick="window.automotoApp.selectVehicle('used-octavia')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="used-octavia">
                       2022 Škoda Octavia
                     </button>
-                    <button type="button" onclick="selectVehicle('new-thar')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="new-thar">
+                    <button type="button" onclick="window.automotoApp.selectVehicle('new-thar')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="new-thar">
                       2026 Thar Roxx
                     </button>
-                    <button type="button" onclick="selectVehicle('used-330i')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="used-330i">
+                    <button type="button" onclick="window.automotoApp.selectVehicle('used-330i')" class="veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200" data-veh="used-330i">
                       2021 BMW 330i
                     </button>
                   </div>
@@ -727,7 +796,7 @@
                   <div class="flex items-center gap-2.5">
                     <button
                       type="button"
-                      onclick="resetAllCheckpoints()"
+                      onclick="window.automotoApp.resetAllCheckpoints()"
                       class="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 px-3.5 py-1.5 rounded-full text-xs font-bold text-zinc-700 flex items-center gap-1.5 transition-all"
                     >
                       <svg class="w-3.5 h-3.5 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
@@ -754,26 +823,26 @@
                   <!-- Diagnostic Tool Tabs -->
                   <div class="flex flex-wrap items-center justify-between gap-3 p-2 bg-zinc-50 border border-zinc-200 rounded-2xl">
                     <div class="flex flex-wrap items-center gap-1.5">
-                      <button type="button" onclick="switchConsoleTab('checklist')" id="tab-btn-checklist" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 bg-white text-zinc-950 shadow-xs border border-zinc-200">
+                      <button type="button" onclick="window.automotoApp.switchConsoleTab('checklist')" id="tab-btn-checklist" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 bg-white text-zinc-950 shadow-xs border border-zinc-200">
                         <span class="text-[#FF4D15]">✓</span>
                         180-Point Defect Switchboard
                       </button>
-                      <button type="button" onclick="switchConsoleTab('paint')" id="tab-btn-paint" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
+                      <button type="button" onclick="window.automotoApp.switchConsoleTab('paint')" id="tab-btn-paint" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
                         <span class="text-[#FF4D15]">◎</span>
                         Laser Paint Micrometer (µm)
                       </button>
-                      <button type="button" onclick="switchConsoleTab('obd')" id="tab-btn-obd" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
+                      <button type="button" onclick="window.automotoApp.switchConsoleTab('obd')" id="tab-btn-obd" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
                         <span class="text-[#00E575]">⚡</span>
                         OBD-II CAN-Bus Live Feed
                       </button>
-                      <button type="button" onclick="switchConsoleTab('tyres')" id="tab-btn-tyres" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
+                      <button type="button" onclick="window.automotoApp.switchConsoleTab('tyres')" id="tab-btn-tyres" class="console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950">
                         <span>🛞</span>
                         Tyre Tread Depth (mm)
                       </button>
                     </div>
 
                     <div class="flex items-center gap-2 px-3 py-1 bg-white border border-zinc-200 rounded-lg text-xs font-mono-tabular">
-                      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                       <span class="text-zinc-600 font-semibold">Console Connected</span>
                       <span class="text-zinc-400 font-normal">· Bluetooth 5.3 Low Latency</span>
                     </div>
@@ -802,9 +871,7 @@
                         </div>
 
                         <!-- 6 Subsystem Cards Grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="subsystems-grid">
-                          <!-- Populated via JavaScript for reactive recalculation -->
-                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="subsystems-grid"></div>
 
                         <!-- Laser Paint Gauge Tolerance Slider -->
                         <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-4">
@@ -824,7 +891,7 @@
                             max="220"
                             step="5"
                             value="140"
-                            oninput="updatePaintTolerance(Number(this.value))"
+                            oninput="window.automotoApp.updatePaintTolerance(Number(this.value))"
                             class="w-full accent-[#FF4D15] cursor-pointer h-2 bg-zinc-200 rounded-lg"
                           />
                           <div class="flex justify-between text-[11px] font-mono-tabular text-zinc-400 mt-1">
@@ -847,14 +914,10 @@
                         </div>
 
                         <!-- Panel Buttons Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="paint-panels-grid">
-                          <!-- Populated via JS -->
-                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="paint-panels-grid"></div>
 
                         <!-- Active Panel Detail Card -->
-                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 space-y-3" id="active-panel-detail">
-                          <!-- Populated via JS -->
-                        </div>
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 space-y-3" id="active-panel-detail"></div>
                       </div>
 
                       <!-- TOOL 3: OBD-II CAN-Bus Live Feed -->
@@ -871,7 +934,7 @@
                           <button
                             type="button"
                             id="btn-scan-ecu"
-                            onclick="runEcuScan()"
+                            onclick="window.automotoApp.runEcuScan()"
                             class="btn-moto-black px-4 py-2 text-xs font-bold flex items-center gap-2 shrink-0 shadow-xs"
                           >
                             <span class="text-[#00E575]">⚡</span>
@@ -932,9 +995,7 @@
                           </p>
                         </div>
 
-                        <div class="space-y-3" id="tyres-list-container">
-                          <!-- Populated via JS -->
-                        </div>
+                        <div class="space-y-3" id="tyres-list-container"></div>
                       </div>
 
                     </div>
@@ -1004,7 +1065,7 @@
                         <button
                           type="button"
                           id="btn-copy-snippet"
-                          onclick="copyReportSnippet()"
+                          onclick="window.automotoApp.copyReportSnippet()"
                           class="bg-white border border-zinc-200 hover:border-zinc-300 px-4 py-2 rounded-xl text-xs font-bold text-zinc-700 hover:text-black flex items-center gap-2 transition-all shadow-xs"
                         >
                           <span class="text-[#FF4D15]">📋</span>
@@ -1013,7 +1074,7 @@
 
                         <button
                           type="button"
-                          onclick="switchViewMode('html-preview')"
+                          onclick="window.automotoApp.switchViewMode('html-preview')"
                           class="btn-moto-black px-5 py-2 text-xs font-bold flex items-center gap-1.5 shadow-sm"
                         >
                           <span class="text-[#00E575]">📄</span>
@@ -1072,7 +1133,7 @@
                           </a>
                           <button
                             type="button"
-                            onclick="downloadHtmlReportFile()"
+                            onclick="window.automotoApp.downloadHtmlReportFile()"
                             class="bg-zinc-100 hover:bg-zinc-200 px-4 py-2 rounded-xl text-xs font-bold text-zinc-900 flex items-center gap-1.5 transition-all"
                           >
                             <span>📥</span>
@@ -1080,7 +1141,7 @@
                           </button>
                           <button
                             type="button"
-                            onclick="switchViewMode('console')"
+                            onclick="window.automotoApp.switchViewMode('console')"
                             class="btn-moto-black px-4 py-2 rounded-xl text-xs font-bold"
                           >
                             ← Back to Field Console
@@ -1190,9 +1251,7 @@
                               <th class="py-3 px-4 text-right font-bold">EST. REFURBISHMENT</th>
                             </tr>
                           </thead>
-                          <tbody id="report-table-body" class="divide-y divide-zinc-100 text-sm">
-                            <!-- Populated via JS -->
-                          </tbody>
+                          <tbody id="report-table-body" class="divide-y divide-zinc-100 text-sm"></tbody>
                         </table>
                       </div>
 
@@ -1381,585 +1440,7 @@
 
     </div>
 
-    <!-- =========================================================================
-         STANDALONE VANILLA JAVASCRIPT LOGIC
-         (Interactive Hardware Console, Live HTML Report, Presets, and Animations)
-    ========================================================================= -->
-    <script>
-      // Vehicle Presets Data
-      const VEHICLES = {
-        'tata-safari': {
-          title: '2024 Tata Safari Accomplished+ Dark Edition',
-          regNo: 'KA03 ND 4921',
-          pdiId: '#PDI011088',
-          vin: 'MAT623497N1049281',
-          odometer: '14,200 km',
-          fuel: 'Kryotec 2.0L Diesel · Automatic',
-          reportUrl: 'https://assist.inspektai.in/r/hJZdYMnaWgwuRYDo/',
-          inspector: 'Kishore M. (Lead PDI Specialist) · Bangalore East Hub',
-        },
-        'used-octavia': {
-          title: '2022 Škoda Octavia L&K 2.0 TSI',
-          regNo: 'MH02 EK 8812',
-          pdiId: '#PDI009412',
-          vin: 'TMBJB7NE4N0019482',
-          odometer: '28,410 km',
-          fuel: '2.0 TSI Petrol · 7-Speed DSG',
-          reportUrl: 'https://assist.inspektai.in/r/hJZdYMnaWgwuRYDo/',
-          inspector: 'Amit Sharma (Field PDI Lead) · Mumbai Central Hub',
-        },
-        'new-thar': {
-          title: '2026 Mahindra Thar Roxx AX7L 4WD',
-          regNo: 'DL01 TC 2026',
-          pdiId: '#PDI012480',
-          vin: 'MA1TA2WR6T2084119',
-          odometer: '42 km',
-          fuel: 'mStallion TGDi · 4WD',
-          reportUrl: 'https://assist.inspektai.in/r/hJZdYMnaWgwuRYDo/',
-          inspector: 'Rahul Verma (QC Inspector) · Gurugram Yard Hub',
-        },
-        'used-330i': {
-          title: '2021 BMW 330i M Sport (G20)',
-          regNo: 'TS09 FN 3300',
-          pdiId: '#PDI008761',
-          vin: 'WBA5R12090F992310',
-          odometer: '34,900 km',
-          fuel: 'B48 2.0L Turbo · 8-Speed Steptronic',
-          reportUrl: 'https://assist.inspektai.in/r/hJZdYMnaWgwuRYDo/',
-          inspector: 'Karthik Rao (Senior Specialist) · Hyderabad Hitec Hub',
-        },
-      };
-
-      // Subsystems Checklist Data
-      let subsystems = [
-        { id: 'sys-powertrain', name: 'Engine, Transmission & ECU Diagnostics', code: 'ENG-01', checkpoints: 42, baseScore: 96, paintMicrons: 110, hasAnomaly: false, findingSummary: 'CAN-bus scanned: 0 fault codes stored. Fuel trims nominal at +1.2%.', repairEstimateInr: 12500 },
-        { id: 'sys-paint', name: 'Exterior Body Panels & Paint Microns', code: 'EXT-02', checkpoints: 38, baseScore: 92, paintMicrons: 115, hasAnomaly: false, findingSummary: 'Rear left quarter panel factory clearcoat uniform. Zero putty detected.', repairEstimateInr: 18500 },
-        { id: 'sys-undercarriage', name: 'Suspension, Steering & Fluid Leaks', code: 'SUS-03', checkpoints: 32, baseScore: 95, paintMicrons: 112, hasAnomaly: false, findingSummary: 'Lower control arm bushings pliable; damper rebound rates factory matched.', repairEstimateInr: 14000 },
-        { id: 'sys-brakes', name: 'Braking System & Tyre Tread Wear', code: 'BRK-04', checkpoints: 28, baseScore: 94, paintMicrons: 116, hasAnomaly: false, findingSummary: 'Front pads 7.2mm remaining (~85% life). Disc rotors runout < 0.03mm.', repairEstimateInr: 9200 },
-        { id: 'sys-cabin', name: 'Cabin Ergonomics & ADAS Sensors', code: 'CAB-05', checkpoints: 24, baseScore: 98, paintMicrons: 108, hasAnomaly: false, findingSummary: '360° camera calibrated; AC evaporator cools to 6.2°C in 90 seconds.', repairEstimateInr: 7800 },
-        { id: 'sys-roadtest', name: 'Dynamic Road Test & NVH Analysis', code: 'DYN-06', checkpoints: 16, baseScore: 96, paintMicrons: 114, hasAnomaly: false, findingSummary: 'Gear transitions crisp under load; steering rack zero dead-zone at 80 km/h.', repairEstimateInr: 21000 },
-      ];
-
-      // Car Panel Laser Measurements
-      const PANELS = [
-        { id: 'panel-hood', name: 'Bonnet / Hood', microns: 112, factoryRange: '100–125 µm', notes: 'Uniform OEM clearcoat. Zero stone chips or clear peel.' },
-        { id: 'panel-roof', name: 'Roof Panel', microns: 108, factoryRange: '95–120 µm', notes: 'Original robot-applied factory paint. Sunroof seals pristine.' },
-        { id: 'panel-f-left', name: 'Front Left Fender', microns: 118, factoryRange: '100–130 µm', notes: 'OEM primer and finish. Fastener torque marks intact.' },
-        { id: 'panel-f-right', name: 'Front Right Fender', microns: 115, factoryRange: '100–130 µm', notes: 'Factory spec. No fender apron distortion.' },
-        { id: 'panel-d-door', name: 'Driver Door (FL)', microns: 114, factoryRange: '100–130 µm', notes: 'Original factory coating. Door hinge pins factory aligned.' },
-        { id: 'panel-r-door', name: 'Rear Right Door (RR)', microns: 122, factoryRange: '100–130 µm', notes: 'OEM paint depth. Window channel weather-stripping verified.' },
-        { id: 'panel-quarter', name: 'Rear Left Quarter', microns: 124, factoryRange: '100–135 µm', notes: 'Factory original paint verified across 8 probe points.' },
-        { id: 'panel-boot', name: 'Tailgate / Boot Lid', microns: 116, factoryRange: '100–130 µm', notes: 'Factory paint depth. Defogger lines and hydraulic struts nominal.' },
-      ];
-
-      // Tyre Health Data
-      const TYRES = [
-        { position: 'Front Left', depthMm: 5.2, healthPct: 86, brand: 'Bridgestone Turanza 235/60 R18', status: 'Optimal' },
-        { position: 'Front Right', depthMm: 5.1, healthPct: 85, brand: 'Bridgestone Turanza 235/60 R18', status: 'Optimal' },
-        { position: 'Rear Left', depthMm: 4.8, healthPct: 80, brand: 'Bridgestone Turanza 235/60 R18', status: 'Good' },
-        { position: 'Rear Right', depthMm: 4.9, healthPct: 82, brand: 'Bridgestone Turanza 235/60 R18', status: 'Good' },
-        { position: 'Spare Wheel', depthMm: 7.2, healthPct: 100, brand: 'Steel Rim Emergency Spare', status: 'Unused / 100%' },
-      ];
-
-      let selectedVehicleKey = 'tata-safari';
-      let paintTolerance = 140;
-      let selectedPanelId = 'panel-hood';
-
-      // Calculation Engine
-      function calculateMetrics() {
-        const totalPoints = subsystems.reduce((sum, s) => sum + s.checkpoints, 0);
-        let flaggedCount = 0;
-        let totalDeduction = 0;
-        let weightedScoreSum = 0;
-
-        subsystems.forEach(sub => {
-          const isFlagged = sub.hasAnomaly || sub.paintMicrons > paintTolerance;
-          if (isFlagged) {
-            flaggedCount++;
-            totalDeduction += sub.repairEstimateInr;
-            weightedScoreSum += (sub.baseScore - 18) * sub.checkpoints;
-          } else {
-            weightedScoreSum += sub.baseScore * sub.checkpoints;
-          }
-        });
-
-        const overallHealthScore = Math.max(50, Math.min(100, Math.round(weightedScoreSum / totalPoints)));
-        const passedCheckpoints = totalPoints - (flaggedCount * 6);
-
-        let verdictLabel = 'Certified Pass with Minor Leverage';
-        if (overallHealthScore >= 92 && flaggedCount === 0) {
-          verdictLabel = 'Pristine · Factory Certified Grade A';
-        } else if (overallHealthScore < 80 || flaggedCount >= 3) {
-          verdictLabel = 'Caution · Significant Refurbishment Needed';
-        }
-
-        return {
-          totalPoints,
-          passedCheckpoints,
-          flaggedCount,
-          totalDeduction,
-          overallHealthScore,
-          verdictLabel,
-        };
-      }
-
-      // Render Subsystem Cards
-      function renderSubsystems() {
-        const grid = document.getElementById('subsystems-grid');
-        if (!grid) return;
-
-        grid.innerHTML = subsystems.map(sub => {
-          const isFlagged = sub.hasAnomaly || sub.paintMicrons > paintTolerance;
-          return `
-            <button
-              type="button"
-              onclick="toggleAnomaly('${sub.id}')"
-              class="text-left p-4 rounded-2xl border transition-all cursor-pointer ${
-                isFlagged
-                  ? 'bg-amber-50/70 border-amber-300 ring-1 ring-amber-300 shadow-xs'
-                  : 'bg-white border-zinc-200 hover:border-zinc-300 shadow-xs'
-              }"
-            >
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-mono-tabular text-zinc-500 font-medium">
-                  ${sub.code} · ${sub.checkpoints} pts
-                </span>
-                <span class="text-[11px] font-mono-tabular font-bold">
-                  ${
-                    isFlagged
-                      ? `<span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full inline-flex items-center gap-1">⚠️ FLAGGED</span>`
-                      : `<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full inline-flex items-center gap-1">✓ NOMINAL</span>`
-                  }
-                </span>
-              </div>
-              <div class="text-sm font-bold text-zinc-900 mb-1">${sub.name}</div>
-              <p class="text-xs text-zinc-500 line-clamp-2">
-                ${isFlagged ? sub.findingSummary : 'All sensor telemetry and mechanical tolerances verified within factory threshold.'}
-              </p>
-              ${
-                isFlagged
-                  ? `<div class="mt-2 text-xs font-mono-tabular font-bold text-[#FF4D15] flex items-center justify-between">
-                      <span>Deduction Leverage:</span>
-                      <span>INR ${sub.repairEstimateInr.toLocaleString('en-IN')}</span>
-                    </div>`
-                  : ''
-              }
-            </button>
-          `;
-        }).join('');
-
-        renderReportTable();
-        updateReadoutDisplays();
-      }
-
-      // Render Customer Report Table
-      function renderReportTable() {
-        const tbody = document.getElementById('report-table-body');
-        if (!tbody) return;
-
-        tbody.innerHTML = subsystems.map(sub => {
-          const isFlagged = sub.hasAnomaly || sub.paintMicrons > paintTolerance;
-          return `
-            <tr class="hover:bg-zinc-50/70 transition-colors">
-              <td class="py-3.5 px-4">
-                <div class="font-bold text-zinc-900">${sub.name}</div>
-                <div class="text-xs text-zinc-500 mt-0.5">${sub.findingSummary}</div>
-              </td>
-              <td class="py-3.5 px-4 font-mono-tabular text-xs text-zinc-600">${sub.checkpoints} pts checked</td>
-              <td class="py-3.5 px-4 font-mono-tabular text-xs text-zinc-600">${sub.paintMicrons} µm</td>
-              <td class="py-3.5 px-4">
-                ${
-                  isFlagged
-                    ? `<span class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full text-xs font-bold">⚠️ Attention Required</span>`
-                    : `<span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full text-xs font-bold">✓ Factory Spec</span>`
-                }
-              </td>
-              <td class="py-3.5 px-4 text-right font-mono-tabular text-xs font-bold text-zinc-900">
-                INR ${isFlagged ? sub.repairEstimateInr.toLocaleString('en-IN') : '0'}
-              </td>
-            </tr>
-          `;
-        }).join('');
-      }
-
-      // Update Telemetry & Report Displays
-      function updateReadoutDisplays() {
-        const m = calculateMetrics();
-        const veh = VEHICLES[selectedVehicleKey];
-
-        // Hardware Console Readout
-        const scoreNum = document.getElementById('score-display-num');
-        if (scoreNum) scoreNum.innerHTML = `${m.overallHealthScore}<span class="text-sm text-zinc-400 font-normal">/100</span>`;
-
-        const checkStr = document.getElementById('checkpoints-passed-str');
-        if (checkStr) checkStr.innerText = `${m.passedCheckpoints} of ${m.totalPoints} pts passed`;
-
-        const repairNum = document.getElementById('repair-estimate-num');
-        if (repairNum) repairNum.innerText = `INR ${m.totalDeduction.toLocaleString('en-IN')}`;
-
-        const verdictLabel = document.getElementById('verdict-label-str');
-        if (verdictLabel) {
-          verdictLabel.innerHTML = `<span class="text-emerald-600">✓</span> ${m.verdictLabel}`;
-        }
-
-        const flaggedCount = document.getElementById('flagged-count-str');
-        if (flaggedCount) flaggedCount.innerText = `${m.flaggedCount} Flagged`;
-
-        // Customer Live HTML Report Readout
-        const rScoreNum = document.getElementById('report-score-num');
-        if (rScoreNum) rScoreNum.innerText = m.overallHealthScore;
-
-        const rSvgCircle = document.getElementById('report-svg-circle');
-        if (rSvgCircle) {
-          const dashOffset = 264 - (264 * m.overallHealthScore) / 100;
-          rSvgCircle.setAttribute('stroke-dashoffset', dashOffset.toString());
-        }
-
-        const rVerdictBadge = document.getElementById('report-verdict-badge');
-        if (rVerdictBadge) {
-          rVerdictBadge.innerHTML = `<span class="text-emerald-600">✓</span> ${m.verdictLabel}`;
-        }
-
-        const rRepairNum = document.getElementById('report-repair-num');
-        if (rRepairNum) rRepairNum.innerText = `INR ${m.totalDeduction.toLocaleString('en-IN')}`;
-
-        const rKpiCheck = document.getElementById('report-kpi-checkpoints');
-        if (rKpiCheck) rKpiCheck.innerText = `${m.passedCheckpoints} / ${m.totalPoints}`;
-
-        const rKpiRefurb = document.getElementById('report-kpi-refurb');
-        if (rKpiRefurb) rKpiRefurb.innerText = `INR ${m.totalDeduction.toLocaleString('en-IN')}`;
-
-        const rKpiPaint = document.getElementById('report-kpi-paint');
-        if (rKpiPaint) rKpiPaint.innerText = `${subsystems[1].paintMicrons} µm`;
-      }
-
-      // Toggle Anomaly on Subsystem Card
-      function toggleAnomaly(id) {
-        subsystems = subsystems.map(item => {
-          if (item.id === id) {
-            const nextAnomaly = !item.hasAnomaly;
-            return {
-              ...item,
-              hasAnomaly: nextAnomaly,
-              paintMicrons: item.id === 'sys-paint' ? (nextAnomaly ? 185 : 115) : item.paintMicrons,
-            };
-          }
-          return item;
-        });
-
-        const quarterPanel = PANELS.find(p => p.id === 'panel-quarter');
-        if (quarterPanel) {
-          quarterPanel.microns = subsystems[1].hasAnomaly ? 185 : 124;
-        }
-
-        renderSubsystems();
-        renderPaintPanels();
-      }
-
-      // Reset All Checkpoints
-      function resetAllCheckpoints() {
-        subsystems = subsystems.map(s => ({
-          ...s,
-          hasAnomaly: false,
-          paintMicrons: 112,
-        }));
-        paintTolerance = 140;
-        const slider = document.getElementById('paint-tolerance-input');
-        if (slider) slider.value = 140;
-        updatePaintTolerance(140);
-        renderSubsystems();
-        renderPaintPanels();
-      }
-
-      // Slider update
-      function updatePaintTolerance(val) {
-        paintTolerance = val;
-        const label = document.getElementById('slider-val-label');
-        if (label) {
-          label.innerText = `${val} µm (Rear Quarter: ${subsystems[1].paintMicrons} µm)`;
-        }
-        renderSubsystems();
-        renderPaintPanels();
-      }
-
-      // Select Vehicle Preset
-      function selectVehicle(key) {
-        selectedVehicleKey = key;
-        const veh = VEHICLES[key];
-
-        // Update button styles
-        document.querySelectorAll('.veh-btn').forEach(btn => {
-          if (btn.getAttribute('data-veh') === key) {
-            btn.className = 'veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs';
-          } else {
-            btn.className = 'veh-btn px-3.5 py-1.5 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-100 text-zinc-700 hover:bg-zinc-200';
-          }
-        });
-
-        // Update Console labels
-        const cVin = document.getElementById('console-vin-badge');
-        if (cVin) cVin.innerText = `VIN · ${veh.vin}`;
-
-        const cTitle = document.getElementById('console-vehicle-title');
-        if (cTitle) cTitle.innerText = veh.title;
-
-        const cOdo = document.getElementById('console-vehicle-odo');
-        if (cOdo) cOdo.innerText = veh.odometer;
-
-        const liveLink = document.getElementById('live-report-link');
-        if (liveLink) liveLink.href = veh.reportUrl;
-
-        // Update Report labels
-        const rBadge = document.getElementById('report-pdi-badge');
-        if (rBadge) rBadge.innerText = veh.pdiId;
-
-        const rTitle = document.getElementById('report-vehicle-title');
-        if (rTitle) rTitle.innerText = `PDI Report — ${veh.title}`;
-
-        const rMeta = document.getElementById('report-vehicle-meta');
-        if (rMeta) rMeta.innerText = `VIN: ${veh.vin} · Reg: ${veh.regNo} · Odometer: ${veh.odometer} · Engine: ${veh.fuel}`;
-
-        const rInspector = document.getElementById('report-inspector-meta');
-        if (rInspector) rInspector.innerText = `Inspector: ${veh.inspector}`;
-
-        updateReadoutDisplays();
-      }
-
-      // Switch Primary View Mode (Console vs Report)
-      function switchViewMode(mode) {
-        const consoleContainer = document.getElementById('view-console-container');
-        const reportContainer = document.getElementById('view-report-container');
-        const btnConsole = document.getElementById('btn-mode-console');
-        const btnReport = document.getElementById('btn-mode-report');
-
-        if (mode === 'console') {
-          consoleContainer.classList.remove('hidden');
-          reportContainer.classList.add('hidden');
-          btnConsole.className = 'px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs flex items-center gap-2';
-          btnReport.className = 'px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all text-zinc-600 hover:text-zinc-950 hover:bg-zinc-50 flex items-center gap-2';
-        } else {
-          consoleContainer.classList.add('hidden');
-          reportContainer.classList.remove('hidden');
-          btnConsole.className = 'px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all text-zinc-600 hover:text-zinc-950 hover:bg-zinc-50 flex items-center gap-2';
-          btnReport.className = 'px-5 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all bg-zinc-950 text-white shadow-xs flex items-center gap-2';
-        }
-      }
-
-      // Switch Diagnostic Tools inside Console
-      function switchConsoleTab(toolKey) {
-        const tools = ['checklist', 'paint', 'obd', 'tyres'];
-        tools.forEach(t => {
-          const view = document.getElementById(`tool-view-${t}`);
-          const btn = document.getElementById(`tab-btn-${t}`);
-          if (t === toolKey) {
-            if (view) view.classList.remove('hidden');
-            if (btn) btn.className = 'console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 bg-white text-zinc-950 shadow-xs border border-zinc-200';
-          } else {
-            if (view) view.classList.add('hidden');
-            if (btn) btn.className = 'console-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 text-zinc-600 hover:text-zinc-950';
-          }
-        });
-      }
-
-      // Render Paint Panels
-      function renderPaintPanels() {
-        const grid = document.getElementById('paint-panels-grid');
-        if (!grid) return;
-
-        grid.innerHTML = PANELS.map(panel => {
-          const isSelected = panel.id === selectedPanelId;
-          const isOver = panel.microns > paintTolerance;
-          return `
-            <button
-              type="button"
-              onclick="selectPaintPanel('${panel.id}')"
-              class="p-3 rounded-xl border text-left transition-all ${
-                isSelected
-                  ? 'bg-zinc-950 text-white border-zinc-950 shadow-sm'
-                  : isOver
-                  ? 'bg-amber-50 text-zinc-900 border-amber-300'
-                  : 'bg-white text-zinc-900 border-zinc-200 hover:border-zinc-300'
-              }"
-            >
-              <div class="text-[11px] font-mono-tabular opacity-70 mb-1">${panel.name}</div>
-              <div class="text-lg font-bold font-mono-tabular">
-                ${panel.microns} <span class="text-xs font-normal">µm</span>
-              </div>
-              <div class="text-[10px] font-mono-tabular mt-1 font-semibold">
-                ${
-                  isOver
-                    ? `<span class="${isSelected ? 'text-amber-300' : 'text-amber-700'}">Repainted panel</span>`
-                    : `<span class="${isSelected ? 'text-emerald-300' : 'text-emerald-700'}">Factory OEM</span>`
-                }
-              </div>
-            </button>
-          `;
-        }).join('');
-
-        renderActivePanelDetail();
-      }
-
-      function selectPaintPanel(id) {
-        selectedPanelId = id;
-        renderPaintPanels();
-      }
-
-      function renderActivePanelDetail() {
-        const detail = document.getElementById('active-panel-detail');
-        if (!detail) return;
-        const panel = PANELS.find(p => p.id === selectedPanelId) || PANELS[0];
-        const isRepainted = panel.microns > paintTolerance;
-
-        detail.innerHTML = `
-          <div class="flex items-center justify-between pb-3 border-b border-zinc-200">
-            <div>
-              <span class="text-xs text-zinc-400 font-mono-tabular uppercase font-bold">Selected Body Panel</span>
-              <div class="text-base font-bold text-zinc-900 mt-0.5">${panel.name}</div>
-            </div>
-            <div class="text-right">
-              <span class="text-xs text-zinc-400 font-mono-tabular uppercase font-bold">Measured Thickness</span>
-              <div class="text-2xl font-black font-mono-tabular text-zinc-950">${panel.microns} µm</div>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4 text-xs">
-            <div>
-              <span class="text-zinc-500 font-medium">OEM Standard Window:</span>
-              <div class="font-bold font-mono-tabular text-zinc-800 mt-0.5">${panel.factoryRange}</div>
-            </div>
-            <div>
-              <span class="text-zinc-500 font-medium">Structural Diagnosis:</span>
-              <div class="font-bold text-zinc-800 mt-0.5">
-                ${isRepainted ? 'Non-Factory Clearcoat Blend Detected' : 'Original Factory Primer & Clear'}
-              </div>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-600 bg-white p-3 rounded-xl border border-zinc-200 leading-relaxed">
-            ${panel.notes}
-          </p>
-        `;
-      }
-
-      // Render Tyres
-      function renderTyres() {
-        const container = document.getElementById('tyres-list-container');
-        if (!container) return;
-
-        container.innerHTML = TYRES.map(t => `
-          <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-zinc-900">${t.position}</span>
-                <span class="text-xs font-mono-tabular bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">
-                  ${t.status}
-                </span>
-              </div>
-              <p class="text-xs text-zinc-500 mt-0.5">${t.brand}</p>
-            </div>
-            <div class="flex items-center gap-6">
-              <div class="text-right">
-                <div class="text-xs text-zinc-400 font-mono-tabular">Tread Depth</div>
-                <div class="text-lg font-bold font-mono-tabular text-zinc-900">
-                  ${t.depthMm} <span class="text-xs font-normal">mm</span>
-                </div>
-              </div>
-              <div class="w-24">
-                <div class="flex justify-between text-[10px] font-mono-tabular text-zinc-500 mb-1">
-                  <span>Health</span>
-                  <span>${t.healthPct}%</span>
-                </div>
-                <div class="w-full bg-zinc-200 h-2 rounded-full overflow-hidden">
-                  <div class="bg-emerald-500 h-full rounded-full" style="width: ${t.healthPct}%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-
-      // Run ECU Scan Simulation
-      function runEcuScan() {
-        const btn = document.getElementById('btn-scan-ecu');
-        const text = document.getElementById('scan-btn-text');
-        if (!btn || !text) return;
-
-        btn.disabled = true;
-        text.innerText = 'Scanning 14 ECUs...';
-
-        setTimeout(() => {
-          btn.disabled = false;
-          text.innerText = 'Run Live ECU Scan';
-          const log = document.getElementById('obd-terminal-log');
-          if (log) {
-            log.innerHTML += `
-              <div class="text-emerald-400 pt-2 border-t border-zinc-800">
-                [+1.200s] RE-SCAN COMPLETED: 14/14 ECUs RESPONDING · 0 FAULT CODES STORED (100% HEALTHY)
-              </div>
-            `;
-            log.scrollTop = log.scrollHeight;
-          }
-        }, 1200);
-      }
-
-      // Copy Embed Snippet
-      function copyReportSnippet() {
-        const veh = VEHICLES[selectedVehicleKey];
-        const m = calculateMetrics();
-        const snippet = `<!-- InspektAI Live HTML PDI Report (${veh.title} · ${veh.pdiId}) -->\n<section class="inspektai-report" data-vin="${veh.vin}" data-score="${m.overallHealthScore}">\n  <h2>${veh.title} — ${m.verdictLabel}</h2>\n  <p>Report ${veh.pdiId} · Passed ${m.passedCheckpoints}/${m.totalPoints} Points · Leverage: INR ${m.totalDeduction.toLocaleString('en-IN')}</p>\n  <p>Verified URL: ${veh.reportUrl}</p>\n</section>`;
-
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(snippet);
-        }
-
-        const text = document.getElementById('copy-btn-text');
-        if (text) {
-          text.innerText = 'Copied Snippet!';
-          setTimeout(() => { text.innerText = 'Copy Embed Snippet'; }, 2000);
-        }
-      }
-
-      // Download Standalone HTML Report
-      function downloadHtmlReportFile() {
-        const veh = VEHICLES[selectedVehicleKey];
-        const m = calculateMetrics();
-        const content = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>InspektAI PDI Report – ${veh.title}</title><style>body{font-family:sans-serif;padding:32px;background:#FAFAFA;} .card{background:#fff;padding:32px;border-radius:16px;max-width:800px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.06);}</style></head><body><div class="card"><h1>${veh.title}</h1><p>Report: ${veh.pdiId} · Score: ${m.overallHealthScore}/100</p><p>Refurbishment Leverage: INR ${m.totalDeduction.toLocaleString('en-IN')}</p><p>Live link: ${veh.reportUrl}</p></div></body></html>`;
-        
-        const blob = new Blob([content], { type: 'text/html' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `InspektAI-PDI-Report-${veh.pdiId.replace('#', '')}.html`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      // Scroll Reveal Observer
-      function initScrollObserver() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        });
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-          observer.observe(el);
-        });
-      }
-
-      // Initialize Everything on Load
-      document.addEventListener('DOMContentLoaded', () => {
-        renderSubsystems();
-        renderPaintPanels();
-        renderTyres();
-        initScrollObserver();
-      });
-    </script>
+    <!-- Main JavaScript Application (Vanilla JS + Three.js 3D Engine) -->
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
